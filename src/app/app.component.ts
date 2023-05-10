@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HubConnection, HubConnectionBuilder, HubConnectionState } from '@microsoft/signalr';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+
+
   title = 'messaging-app-UI';
+
+  constructor(){
+    
+  }
+
+ 
 }

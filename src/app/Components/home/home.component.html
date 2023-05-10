@@ -1,0 +1,26 @@
+<div class="text-center">
+    <h1>Lets connected</h1>
+</div>
+
+<div class="d-flex justify-content-center">
+    <div class="col-12 col-lg-5">
+        <main class="form-signin">
+            <form [formGroup]="userForm" (ngSubmit)="submitForm()" autocomplete="off" class="p-3 border">
+                <h3>Choose your name</h3>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="name" formControlName="name"
+                    [class.is-invalid]="submitted && userForm.get('name')?.errors">
+                    <label for="name">Name</label>
+                    <span class="text-danger" *ngIf="submitted && userForm.get('name')?.hasError('required')">Name is required.</span>
+                    <span class="text-danger" *ngIf="submitted && userForm.get('name')?.hasError('minlength') || userForm.get('name')?.hasError('maxlength')">
+                        Your Name must be at least 3 and max 15 charactor.</span>
+
+                </div>
+
+                <div class="d-grid mt-4 pc-4">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </form>
+        </main>
+    </div>
+</div>

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserloginComponent } from './Component/UserLogin/userlogin/userlogin.component';
 //import { SignupComponent } from './components/signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
@@ -17,11 +16,17 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
+import { NavbarComponent } from './Components/navbar/navbar.component';
+import { FooterComponent } from './Components/footer/footer.component';
+import { HomeComponent } from './Components/home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserloginComponent
+    NavbarComponent,
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,8 @@ import { MatTabsModule } from '@angular/material/tabs';
      BrowserAnimationsModule,
      MatFormFieldModule,
      FormsModule,
-     ReactiveFormsModule 
+     ReactiveFormsModule,
+     NgbModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
