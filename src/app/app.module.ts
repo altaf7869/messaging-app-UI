@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-//import { SignupComponent } from './components/signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
@@ -17,16 +16,22 @@ import {MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NavbarComponent } from './Components/navbar/navbar.component';
-import { FooterComponent } from './Components/footer/footer.component';
 import { HomeComponent } from './Components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChatComponent } from './Components/chat/chat.component';
+import { ChatInputComponent } from './Components/chat-input/chat-input.component';
+import { MessagesComponent } from './Components/messages/messages.component';
+import { PrivateChatComponent } from './Components/private-chat/private-chat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ChatComponent,
+    ChatInputComponent,
+    MessagesComponent,
+    PrivateChatComponent
   ],
   imports: [
     BrowserModule,
