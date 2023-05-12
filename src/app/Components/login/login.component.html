@@ -1,0 +1,46 @@
+<ng-container *ngIf="openChat === false">
+<div class="formContainer">
+    <h1 class="neo-text">Login</h1>
+    <form [formGroup]="Logindata" (ngSubmit)="onSubmit()" class="my-theme">
+        <!-- email  -->
+        <mat-form-field appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input matInput formControlName="email" type="email">
+            <mat-error
+                *ngIf="Logindata.controls['email'].invalid && (Logindata.controls['email'].errors||Logindata.controls['email'].touched)">
+                <span *ngIf="Logindata.controls['email'].errors?.['required']">Email is required.</span>
+                <span *ngIf="Logindata.controls['email'].errors?.['email']">Please enter a valid email
+                    address.</span>
+            </mat-error>
+        </mat-form-field>
+        <!-- password  -->
+
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error
+                *ngIf="Logindata.controls['password'].invalid && (Logindata.controls['password'].errors || Logindata.controls['password'].touched)">
+                <span *ngIf="Logindata.controls['password'].errors?.['required']">Password Required</span>
+                <span *ngIf="Logindata.controls['password'].errors?.['pattern']">
+                    Password must contain at least one lowercase letter, one uppercase letter, one digit, and one
+                    special
+                    character.
+                </span>
+            </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" style="width: 300px;">Login</button>
+        <!-- registraion-link  -->
+        <div style="text-decoration: none; cursor: pointer; margin-top: 5px;">
+            <a (click)="registration()"> Create An Account ? </a>
+        </div>
+    </form>
+</div>
+</ng-container>
+<ng-container *ngIf="openChat === true">
+    <app-chat (closeChatEmitter)="closeChat()"></app-chat>
+</ng-container>
+

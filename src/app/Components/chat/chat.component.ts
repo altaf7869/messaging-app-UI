@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ChatService } from 'src/app/Services/chat.service';
 import { PrivateChatComponent } from '../private-chat/private-chat.component';
+import { UserauthService } from 'src/app/Services/userauth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -12,7 +14,7 @@ export class ChatComponent implements OnInit, OnDestroy{
 
   @Output() closeChatEmitter = new EventEmitter();
 
-  constructor(public chatService:ChatService, private modalService:NgbModal){
+  constructor(public chatService:UserauthService, private modalService:NgbModal, private route:Router){
 
   }
   ngOnDestroy(): void {
@@ -25,6 +27,7 @@ export class ChatComponent implements OnInit, OnDestroy{
 
   backToHome(){
     this.closeChatEmitter.emit();
+    this.route.navigate([''])
   }
 
   sendMessage(content: string){

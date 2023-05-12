@@ -22,6 +22,8 @@ import { ChatComponent } from './Components/chat/chat.component';
 import { ChatInputComponent } from './Components/chat-input/chat-input.component';
 import { MessagesComponent } from './Components/messages/messages.component';
 import { PrivateChatComponent } from './Components/private-chat/private-chat.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { PrivateChatComponent } from './Components/private-chat/private-chat.com
     ChatComponent,
     ChatInputComponent,
     MessagesComponent,
-    PrivateChatComponent
+    PrivateChatComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

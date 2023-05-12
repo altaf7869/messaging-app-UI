@@ -21,7 +21,9 @@ ngOnInit(): void {
 
 initializeForm(){
   this.userForm = this.formbuilder.group({
-    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]]
+    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+    email: ['', [Validators.required]],
+    password: ['', [Validators.required]]
   })
 }
   submitForm(){

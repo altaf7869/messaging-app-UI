@@ -12,6 +12,10 @@
                         <span class="text-danger" *ngIf="submitted && userForm.get('name')?.hasError('minlength') || userForm.get('name')?.hasError('maxlength')">
                             Your Name must be at least 3 and max 15 charactor.</span>
                     </div>
+                    <div>
+                        <input type="text" class="form-control" placeholder="email" formControlName="email">
+                        <input type="text" class="form-control" placeholder="password" formControlName="password">
+                    </div>
                     <div class="form-floating" *ngIf="errorMessage.length > 0">
                         <ul class="text-danger">
                             <li *ngFor="let error of errorMessage">

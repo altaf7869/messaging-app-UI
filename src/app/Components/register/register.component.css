@@ -1,0 +1,15 @@
+.formContainer{
+    align-items: center;
+    display: block;
+    justify-content: center;
+}
+mat-form-field {
+    display: block;
+    width: 325px;
+}
+.link{
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+}

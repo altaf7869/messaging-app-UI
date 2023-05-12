@@ -1,0 +1,9 @@
+.formContainer{
+    align-items: center;
+    display: block;
+    justify-content: center;
+}
+mat-form-field {
+    display: block;
+    width: 300px;
+}
