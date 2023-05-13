@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserauthService } from 'src/app/Services/userauth.service';
 import { GuardServiceService } from 'src/app/Services/guard-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -27,39 +28,43 @@ export class LoginComponent {
       ])],
     })
   }
-  onSubmit() {
-    if (this.Logindata.valid) {
-      this.guardService.login(this.Logindata.value)
+  // onSubmit() {
+  //   if (this.Logindata.valid) {
+  //     this.guardService.login(this.Logindata.value)
       
-      this.openChat = true;
-      this.userauthService.myName = this.Logindata.get('name')?.value;
-    }
-    else {
-      console.log("error")
-    }
-  }
-
-  // onSubmit(){
-  //   //this.submitted = true;
-  //   //this.errorMessage = [];
-  //   if(this.Logindata.valid){
-  //     this.guardService.login(this.Logindata.value).subscribe({
-  //       next: () => {
-  //        // this.userauthService.myName = this.Logindata.get('name')?.value;
-  //         this.openChat = true;
-  //         this.Logindata.reset();
-  //         this.route.navigate(["chat"])
-  //         //this.submitted = false;
-  //       },
-  //       error: error => {
-  //         console.log(error)
-  //         // if(typeof (error.error) !== 'object'){
-  //         //   this.errorMessage.push(error.error);
-  //         // }
-  //       }
-  //     })
+  //     //this.openChat = true;
+  //     this.route.navigate(["chat"]);
+  //     this.userauthService.myName = this.Logindata.get('name')?.value;
+  //   }
+  //   else {
+  //     console.log("error")
   //   }
   // }
+  onSubmit(){
+    if (this.Logindata.valid) {
+    this.userauthService.login(this.Logindata.value).subscribe({
+      next: (r)=> {
+        localStorage.setItem("token",r.token)
+        localStorage.setItem("id",r.id)
+       // localStorage.setItem("userName",r.firstName)
+        this.snackbar.open(r.message,'😜',{
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
+        this.route.navigate(["chat"])
+      }, 
+      error: error => {
+        console.log(error.error)
+        this.snackbar.open(error.error,'😜',{
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
+      }
+    })
+  }
+  }
 
   closeChat(){
     this.openChat = false;

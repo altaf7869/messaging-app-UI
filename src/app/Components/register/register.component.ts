@@ -24,7 +24,6 @@ export class RegisterComponent {
     private route:Router,public chatService:ChatService){
 
     this.RegistrationForm=this.formBuilder.group({
-
       name:['',Validators.compose([Validators.required])],
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
@@ -35,31 +34,54 @@ export class RegisterComponent {
     this.route.navigate([""])
    }
 
-  submitForm(){
-    if(this.RegistrationForm.valid){
-      this.userauthservice.postData(this.RegistrationForm.value).subscribe({
-        next: (res) => {
-          this.userauthservice.myName = this.RegistrationForm.get('name')?.value;
-          //this.openChat = true;
-          this.RegistrationForm.reset();
-          // this.submitted = false;
-          this.snackBar.open("Registration Successfull.",'😜',{
-            duration: 3000,
-            horizontalPosition: 'end',
-            verticalPosition: 'top',
-          });
-          this.route.navigate([""])
+  // submitForm(){
+  //   if(this.RegistrationForm.valid){
+  //     this.userauthservice.postData(this.RegistrationForm.value).subscribe({
+  //       next: (res) => {
+  //         //this.userauthservice.myName = this.RegistrationForm.get('name')?.value;
+  //         //this.RegistrationForm.reset();
+  //         console.log(res, "tessss")
+  //         this.snackBar.open(res,'😜',{
+  //           duration: 3000,
+  //           horizontalPosition: 'end',
+  //           verticalPosition: 'top',
+  //         });
+  //         this.route.navigate([""])
+  //       },
+  //       error: error => {
+  //         this.snackBar.open(error.error.message,'😜',{
+  //           duration: 3000,
+  //           horizontalPosition: 'end',
+  //           verticalPosition: 'top',
+  //         });
+  //       }
+  //     })
+  //   }
+  // }
 
-        },
-        error: error => {
-          this.snackBar.open(error.error.message,'😜',{
-            duration: 3000,
-            horizontalPosition: 'end',
-            verticalPosition: 'top',
-          });
-        }
-      })
-    }
+  submitForm(){
+    if (this.RegistrationForm.valid) {
+    this.userauthservice.postData(this.RegistrationForm.value).subscribe({
+      next: (res) => {
+       console.log(res,'gfdfg')
+       this.RegistrationForm.reset();
+
+        this.snackBar.open("Registration Successfull",'😜',{
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
+        this.route.navigate([""])
+      }, 
+      error: error => {
+        this.snackBar.open(error.error,'😜',{
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
+      }
+    })
+  }
   }
 
   closeChat(){

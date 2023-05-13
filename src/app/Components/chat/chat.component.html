@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-2">
         <div class="d-grid">
-            <button class="btn btn-primary btn-block" type="button" (click)="backToHome()">Back to Home</button>
+            <button mat-raised-button color="primary" type="button" (click)="backToHome()">Back to Home</button>
         </div>
     </div>
 </div>
@@ -10,12 +10,12 @@
 <div class="col-lg-2">
     <div class="card border-secondary mb-3">
         <div class="card-body" style="min-height: 555px;">
-            <div class="row mt-1" *ngFor="let user of users">
+            <div class="row mt-1" *ngFor="let user of chatService.onlineUsers">
                 <div class="col">
                     <div class="d-grid">
                         <button type="button" class="btn card-text btn-block"
                         (dblclick)="openPrivateChat(user)"
-                        [ngClass]="{'btn-success' : user === user.name, 'btn-dark': user !== user.name}">{{user.name}}</button>
+                        [ngClass]="{'btn-success' : user === chatService.myName, 'btn-dark': user !== chatService.myName}">{{user}}</button>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
 <div class="col-lg-9">
     <div class="card border-secondary">
         <div class="card-header h3 text-muted text-center">
-            <div class="card-body" style="min-height: 500px;">
+            <div class="card-body" style="min-height: 450px;">
                 <app-messages [messages]="chatService.messages"></app-messages>
             </div>
             <div class="card-footer">

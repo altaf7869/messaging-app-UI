@@ -1,9 +1,12 @@
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="nav-brand" style="cursor: pointer; text-decoration: none; color: white;">
-                <h2>Chat Application</h2>
-            </a>
-        </div>
-    </nav>
-</header>
+
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Chat Application</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" (click)="logout()" aria-label="Example icon-button with share icon">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+  

@@ -37,7 +37,6 @@ export class UserauthService {
 
   getAllUser(){
     return this.http.get<any>(`${this.baseUrl}api/Auth/getAllUser`);
-
   }
 
   // add data into database [post]
@@ -56,8 +55,6 @@ export class UserauthService {
     this.chatConnection = new HubConnectionBuilder()
     .withUrl(`${this.baseUrl}hubs/chat`).withAutomaticReconnect().build();
     
-
-
     this.chatConnection.start().catch(error => {
       console.log(error)
     });
