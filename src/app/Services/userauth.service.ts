@@ -34,6 +34,12 @@ export class UserauthService {
 
   constructor(private readonly http: HttpClient,private modalService:NgbModal) { }
 
+
+  getAllUser(){
+    return this.http.get<any>(`${this.baseUrl}api/Auth/getAllUser`);
+
+  }
+
   // add data into database [post]
   postData(data: any): Observable<any> {
     return this.http.post<any>(this.registerUrl,data);
@@ -45,8 +51,12 @@ export class UserauthService {
   }
 
   createChatConnection(){
+    console.log(this.baseUrl);
+
     this.chatConnection = new HubConnectionBuilder()
-    .withUrl(`${this.baseUrl}hubs/Auth`).withAutomaticReconnect().build();
+    .withUrl(`${this.baseUrl}hubs/chat`).withAutomaticReconnect().build();
+    
+
 
     this.chatConnection.start().catch(error => {
       console.log(error)

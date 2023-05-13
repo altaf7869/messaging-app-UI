@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class ChatComponent implements OnInit, OnDestroy{
 
   @Output() closeChatEmitter = new EventEmitter();
+ users:any;
 
   constructor(public chatService:UserauthService, private modalService:NgbModal, private route:Router){
 
@@ -23,6 +24,11 @@ export class ChatComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.chatService.createChatConnection();
+
+    // this.chatService.getAllUser().subscribe((response) => {
+    //   this.users = response;
+    //   console.log(response)
+    //   });    
     }
 
   backToHome(){
