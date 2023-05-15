@@ -25,10 +25,10 @@ export class ChatComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.chatService.createChatConnection();
 
-    // this.chatService.getAllUser().subscribe((response) => {
-    //   this.users = response;
-    //   console.log(response)
-    //   });    
+    this.chatService.getAllUser().subscribe((response) => {
+      this.users = response;
+      console.log(response)
+      });    
     }
 
   backToHome(){

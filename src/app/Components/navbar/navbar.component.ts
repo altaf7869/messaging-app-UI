@@ -12,8 +12,8 @@ export class NavbarComponent {
 
   }
   logout(){
-    localStorage.removeItem("token")
-    localStorage.removeItem('id')
+    sessionStorage.removeItem("token")
+    sessionStorage.removeItem('id')
     this.router.navigate([""])
   }
 

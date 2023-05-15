@@ -28,25 +28,14 @@ export class LoginComponent {
       ])],
     })
   }
-  // onSubmit() {
-  //   if (this.Logindata.valid) {
-  //     this.guardService.login(this.Logindata.value)
-      
-  //     //this.openChat = true;
-  //     this.route.navigate(["chat"]);
-  //     this.userauthService.myName = this.Logindata.get('name')?.value;
-  //   }
-  //   else {
-  //     console.log("error")
-  //   }
-  // }
+
   onSubmit(){
     if (this.Logindata.valid) {
     this.userauthService.login(this.Logindata.value).subscribe({
       next: (r)=> {
-        localStorage.setItem("token",r.token)
-        localStorage.setItem("id",r.id)
-       // localStorage.setItem("userName",r.firstName)
+        sessionStorage.setItem("token",r.token)
+        sessionStorage.setItem("id",r.id)
+
         this.snackbar.open(r.message,'😜',{
           duration: 3000,
           horizontalPosition: 'end',

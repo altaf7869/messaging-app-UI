@@ -48,7 +48,7 @@ export class UserauthService {
   login(data: any): Observable<any>{
     return this.http.post<any>(this.loginUrl, data);
   }
-
+ 
   createChatConnection(){
     console.log(this.baseUrl);
 
@@ -87,7 +87,6 @@ export class UserauthService {
       this,this.privateMessgaes = [];
       this.modalService.dismissAll();
      })
-
   }
 
   stopChatConnection(){
@@ -130,5 +129,12 @@ export class UserauthService {
   async closePrivateChatMessage(otherUser: string){
     return this.chatConnection?.invoke('RemovePrivateChat', this.myName, otherUser)
     .catch(error => console.log(error));
+  }
+
+  sendMsg(data:any):Observable<any>{
+    return this.http.post<any>("https://localhost:44352/api/Auth/sendMessage", data);
+  }
+  recvMsg(){
+    return this.http.get<any>("https://localhost:44352/api/Auth/ReceiveMessage");
   }
 }
